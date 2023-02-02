@@ -18,10 +18,9 @@ dt = 21600.0;
 dt2aqh = 1.0;
 
 % years to loop through
-%years = {'1992','1993','1994','1995','1996','1997','1998','1999','2000','2001',...
-%         '2002','2003','2004','2005','2006','2007','2008','2009','2010','2011',...
-%         '2012','2013','2014','2015','2016','2017','2018','2019','2020'};
-years = {'1992'};
+years = {'1992','1993','1994','1995','1996','1997','1998','1999','2000','2001',...
+         '2002','2003','2004','2005','2006','2007','2008','2009','2010','2011',...
+         '2012','2013','2014','2015','2016','2017','2018','2019','2020'};
 
 % select file names
 file_names = {'ERA5_sowise_u10m',...
@@ -64,7 +63,7 @@ for nf=1:length(file_names)
 
         % full file name
         file_in_name = [fin_root_dir file '_' year '.nc'];
-        file_out_name = [fout_root_dir file '_issue01_' year];
+        file_out_name = [fout_root_dir file '_' year];
 
         % progress message
         disp(['Now converting: ' file_in_name])
