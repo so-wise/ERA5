@@ -13,3 +13,9 @@ This repository contains a collection of python and Matlab scripts to download a
 The binary files produced using these scripts are given to MITgcm's EXF package as input. Below is an example temperature field plot:
 
 ![image](https://user-images.githubusercontent.com/11757453/216313214-8d2c9bcc-1f7b-4c71-8e35-837f9bc4c54d.png)
+
+And one of downward longwave radiation:
+
+![image](https://user-images.githubusercontent.com/11757453/216313791-441fb9b2-7f85-41eb-b52a-e29bf249c932.png)
+
+See the `plots/` directory for a few more.
