@@ -56,8 +56,9 @@ for nyear=1:size(years,2)
     e_sx = 10.^(c+(b./(dewpoint_tempC+d))).*(dewpoint_tempC+d).^a;
 
     % write out to binary
+    q_sat = flip(q_sat,2); % required for MITgcm convention
     A = reshape(q_sat,[size(q_sat,1)*size(q_sat,2)*size(q_sat,3) 1]);
-    fid = fopen([bin_root_dir 'ERA_sowise_spfh2m_' year],'w','ieee-be');
+    fid = fopen([bin_root_dir 'ERA5_sowise_spfh2m_' year],'w','ieee-be');
     fwrite(fid,A,'float32');
     fclose(fid); 
 
