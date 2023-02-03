@@ -44,14 +44,9 @@ def get_field(variable_name, year, file_name, file_format='netcdf'):
               '28', '29', '30',
               '31',
           ],
-          'time': [
-              '00:00', '06:00', '12:00',
-              '18:00',
-          ],
-          'area': [
-              -28, -90, -90, 
-              90,
-          ],
+          'time': ['00:00', '06:00', '12:00','18:00'],
+          'area': [-33, -90, -88, 95], # North, West, South, East
+          'grid': ['0.25', '0.25'],
           'format': file_format,
       },
       file_name + file_extension)

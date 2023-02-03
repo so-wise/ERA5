@@ -10,8 +10,8 @@ close all
 clear memory
 
 % directory structure
-nc_root_dir = 'netcdf/';
-bin_root_dir = 'bin/';
+nc_root_dir = 'netcdf_debug/';
+bin_root_dir = 'bin_debug/';
 
 % some coefficients
 a1 = 611.2; a3 = 17.67; a4 = -243.5;
@@ -20,17 +20,18 @@ R_vap = 461.0; % J/kgK
 eps = R_dry./R_vap; 
 
 % years to loop through
-years = {'1992','1993','1994','1995','1996','1997','1998','1999','2000','2001',...
-         '2002','2003','2004','2005','2006','2007','2008','2009','2010','2011',...
-         '2012','2013','2014','2015','2016','2017','2018','2019','2020'};
+years = {'1992'};
+%years = {'1992','1993','1994','1995','1996','1997','1998','1999','2000','2001',...
+%         '2002','2003','2004','2005','2006','2007','2008','2009','2010','2011',...
+%         '2012','2013','2014','2015','2016','2017','2018','2019','2020'};
 
 %% Loop through data
 
 % grid
-lon = ncread('netcdf/ERA5_sowise_dewpt2m_1992.nc','longitude');
-lat = ncread('netcdf/ERA5_sowise_dewpt2m_1992.nc','latitude');
+lon = ncread([nc_root_dir 'ERA5_sowise_dewpt2m_1992.nc'],'longitude');
+lat = ncread([nc_root_dir 'ERA5_sowise_dewpt2m_1992.nc'],'latitude');
 
-%for nyear=1:size(years,2)
+% loop through all years
 for nyear=1:size(years,2)
 
     % extract year

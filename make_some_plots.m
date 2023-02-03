@@ -12,6 +12,11 @@ close all
 addpath ~/matlabfiles/
 addpath ~/matlabfiles/m_map/
 
+% netcdf and binary directories
+netcdf_dir = 'netcdf_debug/';
+bin_dir = 'bin_debug/';
+plot_dir = 'plots_debug/';
+
 % colorbar
 load('/users/dannes/colormaps/div11_RdBu.txt');
 cmp = div11_RdBu./256;
@@ -60,7 +65,7 @@ for nvar=1:size(file_names,2)
         disp(['Now plotting ' variable_name ' in year ' year])
 
         % load NetCDF
-        name_nc = ['netcdf/' file_name '_' year '.nc'];  
+        name_nc = [netcdf_dir file_name '_' year '.nc'];  
         A_nc = ncread(name_nc, variable_name);
         x = ncread(name_nc,'longitude');
         y = ncread(name_nc,'latitude');
@@ -79,7 +84,7 @@ for nvar=1:size(file_names,2)
         %file_name = strrep(file_name, 'degK', 'degC'); 
 
         % load binary
-        fid = fopen(['bin/' file_name '_' year],'r','ieee-be');
+        fid = fopen([bin_dir file_name '_' year],'r','ieee-be');
         A_bin = fread(fid,'float32');
         fclose(fid);
 
@@ -89,7 +94,7 @@ for nvar=1:size(file_names,2)
         % plot first snapshot
         figPos = [440 143 838 633];
         figure('color','w','visible','off','position',figPos);
-        m_proj('lambert','long',[-90 90],'lat',[-85 -28]);
+        m_proj('lambert','long',[-90 95],'lat',[-88 -33]);
         m_pcolor(X,Y,squeeze(A_bin(:,:,1)));
         shading flat;
         colorbar;
@@ -128,11 +133,11 @@ for nvar=1:size(file_names,2)
         m_coast('color',[1 .85 .7]);
         m_grid('box','fancy',...
                'tickdir','in',...
-               'xtick',[-90 -60 -30 30 60],...
+               'xtick',[-90 -60 -30 30 60 90],...
                'ytick',[-80 -60 -40],...
                'xaxislocation','top');
         title(['First snapshot of ' lower(long_var_name) ' (' units '), ' 'symbol: ' variable_name]);
-        saveas(gcf,['plots/' file_name '_initial.jpg'],'jpg')
+        saveas(gcf,[plot_dir file_name '_initial.jpg'],'jpg')
 
     end
 
