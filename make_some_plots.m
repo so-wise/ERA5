@@ -90,6 +90,7 @@ for nvar=1:size(file_names,2)
 
         % reshape
         A_bin = reshape(A_bin,[nx, ny, nt]);
+        A_bin = flip(A_bin,2);
 
         % plot first snapshot
         figPos = [440 143 838 633];
