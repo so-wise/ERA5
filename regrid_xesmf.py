@@ -61,15 +61,15 @@ regridder
 # Test the regridder out on an example slice
 test_out = regridder(var[0,:,:])
 
-# Initialise an array for the regridded output
-var_out = np.empty((var.shape[0], test_out.shape[0], test_out.shape[1]))
-
 # Loop over all NetCDF files in the input directory
 for filename in files:
 
     # Display name of file that is being converted
     np.disp('Now working on:')
     np.disp(filename)
+
+    # Initialise an array for the regridded output
+    var_out = np.empty((var.shape[0], test_out.shape[0], test_out.shape[1]))
 
     # Open the NetCDF file
     ds = xr.open_dataset(os.path.join(fin, filename))
@@ -89,7 +89,9 @@ for filename in files:
     # Change from float64 to float32
     var_out = np.float32(var_out)
 
-    # 
+    # Transpose to (time, lat, lon) [I have tried all permutations, none of them work]
+#   var_out = np.transpose(var_out,(1,2,0))
+    var_out = np.transpose(var_out,(0,2,1))
 
     # Write results to 32-bit binary file
-    var_out.astype('>f4').flatten().tofile(os.path.join(fout, filename.replace('.nc', '')))
+    var_out.astype('>f4').tofile(os.path.join(fout, filename.replace('.nc', '')))

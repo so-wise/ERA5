@@ -11,7 +11,7 @@ file_format = 'netcdf'
 
 # set 
 if file_format=='netcdf':
-  file_root_dir = 'netcdf/'
+  file_root_dir = 'netcdf_tmp/'
 elif file_format=='grib':
   file_root_dir = 'grib/'
 else:
@@ -45,9 +45,10 @@ file_names = ['ERA5_sowise_u10m',
 file_names = [file_root_dir + s for s in file_names]
 
 # select years to download
-years = ['1992','1993','1994','1995','1996','1997','1998','1999','2000','2001',
-         '2002','2003','2004','2005','2006','2007','2008','2009','2010','2011',
-         '2012','2013','2014','2015','2016','2017','2018','2019','2020']
+#years = ['1992','1993','1994','1995','1996','1997','1998','1999','2000','2001',
+#         '2002','2003','2004','2005','2006','2007','2008','2009','2010','2011',
+#         '2012','2013','2014','2015','2016','2017','2018','2019','2020']
+years = ['1992']
 
 #
 # -- loop over variables and years to download individual files
